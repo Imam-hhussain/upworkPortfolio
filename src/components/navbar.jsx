@@ -1,33 +1,79 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  return (
-    <nav className="bg-gray-800 text-white shadow-md mx-15">
-      <div className=" py-4">
-        <div className="hidden md:flex justify-between w-full px-10">
-          <a href="/" className="hover:text-orange-500 transition-colors">
-            Home
-          </a>
-          <a href="/services" className="hover:text-orange-500  transition-colors">
-            Services
-          </a>
-          <a href="/about" className="hover:text-orange-500 transition-colors">
-            About
-          </a>
-          <a href="/" className="text-2xl font-bold">
-          Logo
-        </a>
-          <a href="/resume" className="hover:text-orange-500  transition-colors">
-            Resume
-          </a>
-          <a href="/resume" className="hover:text-orange-500  transition-colors">
-            Projects
-          </a>
 
-          <a href="/contact" className="hover:text-orange-500  transition-colors">
-            Contact
+  // Active style or class
+  const activeClassName = "text-orange-500";
+
+  return (
+    <nav className="bg-gray-800 text-white font-bold shadow-md mx-15 sticky  top-0 z-50 ">
+      <div className="py-4">
+        <div className="hidden md:flex justify-between w-full px-10">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? "bg-orange-400 text-white px-4 py-2 rounded-full"
+                : "hover:bg-orange-500 px-4 py-2 rounded-full transition-colors"
+            }
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/services"
+            className={({ isActive }) =>
+              isActive
+                ? "bg-orange-400 text-white px-4 py-2 rounded-full"
+                : "hover:bg-orange-500 px-4 py-2 rounded-full transition-colors"
+            }
+          >
+            Services
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive
+                ? "bg-orange-400 text-white px-4 py-2 rounded-full"
+                : "hover:bg-orange-500 px-4 py-2 rounded-full transition-colors"
+            }
+          >
+            About
+          </NavLink>
+          <a href="/" className="text-2xl font-bold">
+            Logo
           </a>
+          <NavLink
+            to="/resume"
+            className={({ isActive }) =>
+              isActive
+                ? "bg-orange-400 text-white px-4 py-2 rounded-full"
+                : "hover:bg-orange-500 px-4 py-2 rounded-full transition-colors"
+            }
+          >
+            Resume
+          </NavLink>
+          <NavLink
+            to="/projects"
+            className={({ isActive }) =>
+              isActive
+                ? "bg-orange-400 text-white px-4 py-2 rounded-full"
+                : "hover:bg-orange-500 px-4 py-2 rounded-full transition-colors"
+            }
+          >
+            Projects
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive
+                ? "bg-orange-400 text-white px-4 py-2 rounded-full"
+                : "hover:bg-orange-500 px-4 py-2 rounded-full transition-colors"
+            }
+          >
+            Contact
+          </NavLink>
         </div>
 
         <button
@@ -36,7 +82,7 @@ const Navbar = () => {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
+            className="h-6 w-6 ml-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -45,11 +91,7 @@ const Navbar = () => {
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d={
-                isOpen
-                  ? "M6 18L18 6M6 6l12 12" // Close icon
-                  : "M4 6h16M4 12h16M4 18h16" // Hamburger icon
-              }
+              d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
             />
           </svg>
         </button>
@@ -57,42 +99,66 @@ const Navbar = () => {
 
       {isOpen && (
         <div className="md:hidden bg-black">
-          <a
-            href="/"
-            className="block px-4 py-2 hover:bg-blue-800 transition-colors"
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? `${activeClassName} block px-4 py-2 bg-orange-400 text-white rounded`
+                : "block px-4 py-2 hover:bg-orange-500 transition-colors rounded"
+            }
           >
             Home
-          </a>
-          <a
-            href="/services"
-            className="block px-4 py-2 hover:bg-blue-800 transition-colors"
+          </NavLink>
+          <NavLink
+            to="/services"
+            className={({ isActive }) =>
+              isActive
+                ? `${activeClassName} block px-4 py-2 bg-orange-400 text-white rounded`
+                : "block px-4 py-2 hover:bg-orange-400 transition-colors rounded"
+            }
           >
             Services
-          </a>
-          <a
-            href="/about"
-            className="block px-4 py-2 hover:bg-blue-800 transition-colors"
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive
+                ? `${activeClassName} block px-4 py-2 bg-orange-400 text-white rounded`
+                : "block px-4 py-2 hover:bg-orange-500 transition-colors rounded"
+            }
           >
             About
-          </a>
-          <a
-            href="/resume"
-            className="block px-4 py-2 hover:bg-blue-800 transition-colors"
+          </NavLink>
+          <NavLink
+            to="/resume"
+            className={({ isActive }) =>
+              isActive
+                ? `${activeClassName} block px-4 py-2 bg-orange-400 text-white rounded`
+                : "block px-4 py-2 hover:bg-orange-500 transition-colors rounded"
+            }
           >
             Resume
-          </a>
-            <a
-            href="/resume"
-            className="block px-4 py-2 hover:bg-blue-800 transition-colors"
+          </NavLink>
+          <NavLink
+            to="/projects"
+            className={({ isActive }) =>
+              isActive
+                ? `${activeClassName} block px-4 py-2 bg-orange-400 text-white rounded`
+                : "block px-4 py-2 hover:bg-orange-500 transition-colors rounded"
+            }
           >
-            Resume
-          </a>
-          <a
-            href="/contact"
-            className="block px-4 py-2 hover:bg-blue-800 transition-colors"
+            Projects
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive
+                ? `${activeClassName} block px-4 py-2 bg-orange-400 text-white rounded`
+                : "block px-4 py-2 hover:bg-orange-500 transition-colors rounded"
+            }
           >
             Contact
-          </a>
+          </NavLink>
         </div>
       )}
     </nav>

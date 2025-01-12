@@ -8,7 +8,7 @@ function Testimonials() {
     {
       image: ImageTestimonial,
       name: "John Doe",
-      text: "This product exceeded my expectationing! s.",
+      text: "Loved it! Will definitely buy again.",
       specialized: "UI/UX Designer",
       rating: 5,
     },
@@ -54,11 +54,11 @@ function Testimonials() {
   };
 
   return (
-    <div className="p-6 bg-gray-800 rounded-2xl">
+    <div className="p-6 bg-gray-800 rounded-2xl pt-[100px]">
       <div>
         <h1 className="text-center text-white font-medium text-4xl">
           Testimonials That <br /> Speak to My{" "}
-          <span className="text-orange-500">Results</span>
+          <span className="text-orange-400">Results</span>
         </h1>
         <p className="text-center text-white pt-4 py-10">
           This product is amazing! Totally exceeded my expectations. This
@@ -69,26 +69,25 @@ function Testimonials() {
         {testimonials.map((testimonial, index) => (
           <div
             key={index}
-            className="bg-gray-600 border-2 rounded-lg shadow-md mt-12 mb-16 p-6 " 
+            className="bg-gray-600 border-2 rounded-lg shadow-md mt-12 mb-16 p-6 flex flex-col justify-center items-center" // Center content
           >
-
-            <div className="flex text-white">
+            <div className="flex justify-center items-center mb-4 text-white">
               <img
                 src={testimonial.image}
                 alt={testimonial.name}
-                className="w-12 h-12 rounded-full mx-2 mb-4"
+                className="w-12 h-12 rounded-full mx-2"
               />
-              <h3 className="text-lg font-semibold mb-2">
+              <h3 className="text-lg font-semibold text-center mb-2">
                 {testimonial.name} <br />
                 <span className="text-sm">{testimonial.specialized}</span>
               </h3>
             </div>
-            <div className="text-white">
-              <div className="flex">
+            <div className="text-white text-center">
+              <div className="flex justify-center mb-3">
                 {"⭐".repeat(testimonial.rating)}
                 <h2 className="px-3">5.0</h2>
               </div>
-              <p className="text-white mb-4">{testimonial.text}</p>
+              <p className="mb-4">{testimonial.text}</p>
             </div>
           </div>
         ))}
